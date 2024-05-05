@@ -48,6 +48,7 @@
 #include "3d.h"
 #include <getopt.h>
 #include <stdlib.h>
+#include <math.h>
 
 /**
  * @brief global var definition
@@ -410,7 +411,7 @@ uint8_t mpu6050(uint8_t argc, char **argv)
                 mpu6050_interface_debug_print("mpu6050: gyro z[0] is %0.2fdps.\n", gs_gyro_dps[0][2]);
                 */
                 
-                draw_airplane((double)gs_yaw[0], (double)gs_pitch[0], (double)gs_roll[0]);
+                draw_airplane((double)(gs_yaw[0]/180.0*M_PI), (double)(gs_pitch[0]/180.0*M_PI), (double)(gs_roll[0]/180.0*M_PI));
                 
                 /* delay 200 ms */
                 mpu6050_interface_delay_ms(200);
